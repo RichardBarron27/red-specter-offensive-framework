@@ -21,3 +21,9 @@ Everything runs from a single launcher:
 
 ```bash
 ./redspecter.sh
+⚡ Features
+🧭 Core Modules
+Module	Script	Description
+Core Recon	core/redspecter-recon.sh	Host + domain recon, passive footprinting
+Web Enumeration	core/redspecter-webenum.sh	HTTP probing, tech detection
+Vulnerability Scanning	core/redspecter-vulnscan.sh	Nmap vuln scripts & baseline checks
