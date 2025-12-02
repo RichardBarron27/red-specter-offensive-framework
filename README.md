@@ -21,9 +21,204 @@ Everything runs from a single launcher:
 
 ```bash
 ./redspecter.sh
-⚡ Features
-🧭 Core Modules
-Module	Script	Description
-Core Recon	core/redspecter-recon.sh	Host + domain recon, passive footprinting
-Web Enumeration	core/redspecter-webenum.sh	HTTP probing, tech detection
-Vulnerability Scanning	core/redspecter-vulnscan.sh	Nmap vuln scripts & baseline checks
+
+
+| Module                 | Script                        | Description                               |
+| ---------------------- | ----------------------------- | ----------------------------------------- |
+| Core Recon             | `core/redspecter-recon.sh`    | Host + domain recon, passive footprinting |
+| Web Enumeration        | `core/redspecter-webenum.sh`  | HTTP probing, tech detection              |
+| Vulnerability Scanning | `core/redspecter-vulnscan.sh` | Nmap vuln scripts & baseline checks       |
+
+
+| Module                      | Script                                           | Description                                       |
+| --------------------------- | ------------------------------------------------ | ------------------------------------------------- |
+| Advanced Recon              | `adv/adv-recon/redspecter-recon-adv.sh`          | DNS, subdomain pivoting, large-scope recon        |
+| Advanced Web Enum           | `adv/adv-webenum/redspecter-webenum-adv.sh`      | Deep enumeration, optional fuzzing                |
+| Advanced Vulnerability Scan | `adv/adv-vulnscan/redspecter-vulnscan-adv.sh`    | Multi-tool, deeper plugin-based scans             |
+| Exploitation Support        | `adv/adv-exploitation/redspecter-exploit-adv.sh` | Controlled exploitation helpers (non-destructive) |
+| PrivEsc / Post-Ex           | `adv/adv-privesc/redspecter-post-adv.sh`         | Local enumeration, privilege escalation flow      |
+
+
+🕵️ Email OSINT Module (v1.1)
+
+redspecter-osint-email.sh
+
+Sources:
+
+Website crawl (Safe / Normal / Aggressive)
+
+Certificate Transparency (crt.sh)
+
+Optional theHarvester integration
+
+Outputs:
+
+Unique email list
+
+First-party vs third-party split
+
+Markdown report
+
+All raw data stored for auditability
+
+Reports generated in:
+
+reports/osint-email/
+
+
+| Tool                        | Script                             | Description                                 |
+| --------------------------- | ---------------------------------- | ------------------------------------------- |
+| Kali Setup                  | `red_specter_kali_setup.sh`        | Optional environment bootstrap              |
+| Update All Tools            | `utils/redspecter-update-tools.sh` | `apt update`, `apt upgrade`, tool installer |
+| WiFi Modules (placeholders) | `utils/*`                          | Reserved for wireless tooling               |
+
+
+
+
+
+📁 Project Structure
+
+RedSpecter/
+├── core/
+├── adv/
+│   ├── adv-recon/
+│   ├── adv-webenum/
+│   ├── adv-vulnscan/
+│   ├── adv-exploitation/
+│   └── adv-privesc/
+├── utils/
+├── reports/
+├── redspecter.sh
+├── redspecter-osint-email.sh
+├── red_specter_kali_setup.sh
+├── LICENSE
+└── README.md
+
+🔧 Installation
+
+Clone the repository:
+
+chmod +x redspecter.sh
+chmod +x redspecter-osint-email.sh
+chmod +x core/*.sh adv/*/*.sh utils/*.sh
+
+
+Ensure scripts are executable:
+
+chmod +x redspecter.sh
+chmod +x redspecter-osint-email.sh
+chmod +x core/*.sh adv/*/*.sh utils/*.sh
+
+Install required tools:
+
+./redspecter.sh
+# Choose: 5) Utilities → 2) Update Red Specter Tools
+
+▶️ Usage
+
+Launch the framework:
+
+./redspecter.sh
+
+
+Main menu options:
+
+1) Core Modules
+
+2) Advanced Modules
+
+3) OSINT / Email Intelligence
+
+4) WiFi Tools
+
+5) Utilities / Setup
+
+0) Exit
+
+Example: Running Email OSINT
+3 → 1 → enter domain → choose crawl mode → report generated
+
+
+Reports stored in:
+
+reports/osint-email/
+
+📌 Roadmap
+
+Planned features:
+
+ Credential Exposure OSINT (breach parsing)
+
+ Screenshot Enumeration (gowitness-style module)
+
+ Nuclei template updater
+
+ JSON/Workspace Recon Mode (closer to recon-ng)
+
+ Red Specter GitHub Release Automation
+
+ GUI front-end (long-term)
+
+
+⚖️ Legal Notice
+
+Red Specter is for:
+
+Ethical hacking, lab training, and authorized penetration testing only.
+
+You must have explicit written permission from the system owner.
+
+Misuse may violate laws such as the Computer Misuse Act (UK).
+
+The author(s) assume no liability for unauthorized use.
+
+
+🩸 About the Project
+
+Red Specter is a personal offensive framework built by:
+
+Richard B (Red Specter / Red-Specter.co.uk)
+
+Vigil — the AI Co-Intelligence Partner
+
+Aiming to combine:
+
+Speed
+
+Repeatability
+
+Professional reporting
+
+Ethical, controlled testing
+
+📜 License
+
+Released under the MIT License.
+See LICENSE for details.
+
+
+---
+
+# Ready to upload?
+
+Go into your repo and replace the existing README.md with this.
+
+If you want:
+
+- badges  
+- ASCII art logo  
+- an “About Red Specter” graphic  
+- a table of contents  
+- animated screenshots (GIFs) of the framework  
+
+I can add all of that next.
+
+Just tell me:
+
+👉 **“Add branding + badges”**  
+or  
+👉 **“Add a Red Specter ASCII banner”**
+
+
+
+
