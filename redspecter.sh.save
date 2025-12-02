@@ -1,0 +1,182 @@
+#!/usr/bin/env bash
+#
+# Red Specter Offensive Framework - Launcher
+# Root: /home/richard/RedSpecter
+#
+# Modules:
+#   core/redspecter-recon.sh
+#   core/redspecter-webenum.sh
+#   core/redspecter-vulnscan.sh
+#   core/redspecter-wifi-core.sh
+#   adv/adv-recon/redspecter-recon-adv.sh
+#   adv/adv-webenum/redspecter-webenum-adv.sh
+#   adv/adv-vulnscan/redspecter-vulnscan-adv.sh
+#   adv/adv-exploitation/redspecter-exploit-adv.sh
+#   adv/adv-privesc/redspecter-post-adv.sh
+#   adv/adv-wifi/redspecter-wifi-adv.sh
+#
+
+set -euo pipefail
+
+VERSION="1.0"
+
+RED="$(printf '\033[31m')"
+GRN="$(printf '\033[32m')"
+YEL="$(printf '\033[33m')"
+BLU="$(printf '\033[34m')"
+RST="$(printf '\033[0m')"
+
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPORTS_DIR="${ROOT_DIR}/reports"
+
+# Core modules
+CORE_RECON="${ROOT_DIR}/core/redspecter-recon.sh"
+CORE_WEBENUM="${ROOT_DIR}/core/redspecter-webenum.sh"
+CORE_VULN="${ROOT_DIR}/core/redspecter-vulnscan.sh"
+WIFI_CORE="${ROOT_DIR}/core/redspecter-wifi-core.sh"
+
+# Advanced modules
+ADV_RECON="${ROOT_DIR}/adv/adv-recon/redspecter-recon-adv.sh"
+ADV_WEBENUM="${ROOT_DIR}/adv/adv-webenum/redspecter-webenum-adv.sh"
+ADV_VULN="${ROOT_DIR}/adv/adv-vulnscan/redspecter-vulnscan-adv.sh"
+ADV_EXPLOIT="${ROOT_DIR}/adv/adv-exploitation/redspecter-exploit-adv.sh"
+ADV_POST="${ROOT_DIR}/adv/adv-privesc/redspecter-post-adv.sh"
+WIFI_ADV="${ROOT_DIR}/adv/adv-wifi/redspecter-wifi-adv.sh"
+
+banner() {
+    cat <<EOF
+${BLU}==========================================
+   Red Specter Offensive Framework
+   Root: ${ROOT_DIR}
+==========================================${RST}
+EOF
+}
+
+pause() {
+    echo
+    read -rp "Press Enter to return to menu..." _
+}
+prompt_target() {
+    local tgt
+    read -rp "Target (domain/IP/CIDR/URL as appropriate): " tgt
+    echo "${tgt}"
+}
+
+prompt_notes() {
+    local n
+    read -rp "Short notes tag (optional): " n || true
+    echo "${n}"
+}
+
+ensure_reports_dir() {
+    mkdir -p "${REPORTS_DIR}"
+}
+
+menu() {
+    banner
+    echo "${GRN}Choose a module:${RST}"
+    echo
+    echo "  1) Recon - Core"
+    echo "  2) Recon - Advanced"
+    echo "  3) Web Enumeration - Core"
+    echo "  4) Web Enumeration - Advanced"
+    echo "  5) Vulnerability Scan - Core"
+    echo "  6) Vulnerability Scan - Advanced"
+    echo "  7) Exploitation Support (ADV)"
+    echo "  8) Post-Exploitation / PrivEsc (ADV)"
+    echo "  9) WiFi - Core Survey"
+    echo " 10) WiFi - Advanced LAN Survey"
+    echo "  q) Quit"
+    echo
+}
+
+ensure_reports_dir
+
+while true; do
+    menu
+    read -rp "Select an option: " choice
+    echo
+
+    case "${choice}" in
+        1)
+            echo "${BLU}[*] Recon - Core${RST}"
+            target="$(prompt_target)"
+            notes="$(prompt_notes)"
+            sudo "${CORE_RECON}" -t "${target}" -o "${REPORTS_DIR}" -n "${notes}" || true
+            pause
+            ;;
+        2)
+            echo "${BLU}[*] Recon - Advanced${RST}"
+            target="$(prompt_target)"
+            notes="$(prompt_notes)"
+            sudo "${ADV_RECON}" -t "${target}" -o "${REPORTS_DIR}" -n "${notes}" || true
+            pause
+            ;;
+        3)
+            echo "${BLU}[*] Web Enumeration - Core${RST}"
+            target="$(prompt_target)"
+            notes="$(prompt_notes)"
+            sudo "${CORE_WEBENUM}" -t "${target}" -o "${REPORTS_DIR}" -n "${notes}" || true
+            pause
+            ;;
+        4)
+            echo "${BLU}[*] Web Enumeration - Advanced${RST}"
+            target="$(prompt_target)"
+            notes="$(prompt_notes)"
+            sudo "${ADV_WEBENUM}" -t "${target}" -o "${REPORTS_DIR}" -n "${notes}" || true
+            pause
+            ;;
+        5)
+            echo "${BLU}[*] Vulnerability Scan - Core${RST}"
+            target="$(prompt_target)"
+            notes="$(prompt_notes)"
+            sudo "${CORE_VULN}" -t "${target}" -o "${REPORTS_DIR}" -n "${notes}" || true
+            pause
+            ;;
+        6)
+            echo "${BLU}[*] Vulnerability Scan - Advanced${RST}"
+            target="$(prompt_target)"
+            notes="$(prompt_notes)"
+            sudo "${ADV_VULN}" -t "${target}" -o "${REPORTS_DIR}" -n "${notes}" || true
+            pause
+            ;;
+        7)
+            echo "${BLU}[*] Exploitation Support (ADV)${RST}"
+            target="$(prompt_target)"
+            notes="$(prompt_notes)"
+            sudo "${ADV_EXPLOIT}" -t "${target}" -o "${REPORTS_DIR}" -n "${notes}" || true
+            pause
+            ;;
+        8)
+            echo "${BLU}[*] Post-Exploitation / PrivEsc (ADV)${RST}"
+            target="$(prompt_target)"
+            notes="$(prompt_notes)"
+            sudo "${ADV_POST}" -t "${target}" -o "${REPORTS_DIR}" -n "${notes}" || true
+            pause
+            ;;
+        9)
+            echo "${BLU}[*] WiFi - Core Survey${RST}"
+            notes="$(prompt_notes)"
+            sudo "${WIFI_CORE}" -o "${REPORTS_DIR}" -n "${notes}" || true
+            pause
+            ;;
+        10)
+            echo "${BLU}[*] WiFi - Advanced LAN Survey${RST}"
+            notes="$(prompt_notes)"
+            read -rp "Interface (blank = auto-detect): " wifi_iface || true
+            read -rp "Subnet CIDR (blank = auto-detect, e.g. 192.168.1.0/24): " wifi_subnet || true
+            cmd=(sudo "${WIFI_ADV}" -o "${REPORTS_DIR}" -n "${notes}")
+            [[ -n "${wifi_iface}" ]]  && cmd+=(-i "${wifi_iface}")
+            [[ -n "${wifi_subnet}" ]] && cmd+=(-s "${wifi_subnet}")
+            "${cmd[@]}" || true
+            pause
+            ;;
+        q|Q)
+            echo "${GRN}[+] Exiting Red Specter Offensive Framework.${RST}"
+            exit 0
+            ;;
+        *)
+            echo "${RED}[!] Invalid option, try again.${RST}"
+            ;;
+    esac
+done
