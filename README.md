@@ -199,26 +199,5 @@ See LICENSE for details.
 
 ---
 
-# Ready to upload?
-
-Go into your repo and replace the existing README.md with this.
-
-If you want:
-
-- badges  
-- ASCII art logo  
-- an “About Red Specter” graphic  
-- a table of contents  
-- animated screenshots (GIFs) of the framework  
-
-I can add all of that next.
-
-Just tell me:
-
-👉 **“Add branding + badges”**  
-or  
-👉 **“Add a Red Specter ASCII banner”**
-
-
 
 
