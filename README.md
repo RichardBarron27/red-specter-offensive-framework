@@ -1,3 +1,9 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/RichardBarron27/red-specter-offensive-framework/main/assets/red-specter-logo.png" alt="Red Specter Logo" width="200">
+</p>
+
+<br>
+
  # 🧨 Red Specter Offensive Framework
  [![Stars](https://img.shields.io/github/stars/RichardBarron27/red-specter-offensive-framework?style=flat&logo=github)](https://github.com/RichardBarron27/red-specter-offensive-framework/stargazers)
 ![Last Commit](https://img.shields.io/github/last-commit/RichardBarron27/red-specter-offensive-framework)
