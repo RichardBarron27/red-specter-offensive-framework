@@ -1,4 +1,9 @@
  # 🧨 Red Specter Offensive Framework
+ [![Stars](https://img.shields.io/github/stars/RichardBarron27/red-specter-offensive-framework?style=flat&logo=github)](https://github.com/RichardBarron27/red-specter-offensive-framework/stargazers)
+![Last Commit](https://img.shields.io/github/last-commit/RichardBarron27/red-specter-offensive-framework)
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)
+![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20Kali%20-purple)
+
 > Companion tools: ScriptMap · Email OSINT
 
 **Modular Offensive Security Toolkit for Ethical Hacking Labs & Authorized Penetration Testing**  
