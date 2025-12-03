@@ -1,4 +1,6 @@
-# 🔥 Red Specter Offensive Framework  
+ # 🧨 Red Specter Offensive Framework
+> Companion tools: ScriptMap · Email OSINT
+
 **Modular Offensive Security Toolkit for Ethical Hacking Labs & Authorized Penetration Testing**  
 Version **1.4** • Created by **Richard B (Red Specter)**
 
@@ -195,6 +197,22 @@ Ethical, controlled testing
 
 Released under the MIT License.
 See LICENSE for details.
+
+---
+
+### 🔗 Explore the Red Specter tool suite
+
+- 🗺 **ScriptMap** – Map, group, and document your security/automation scripts in seconds.  
+  https://github.com/RichardBarron27/redspecter-scriptmap
+
+- 🧨 **Red Specter Offensive Framework** – Modular bash framework for recon, web enum, vuln scanning, and more (Kali-friendly).  
+  https://github.com/RichardBarron27/red-specter-offensive-framework
+
+- 📧 **Red Specter Email OSINT** – Email-focused OSINT helper for investigators and defenders.  
+  https://github.com/RichardBarron27/redspecter-emailosint
+
+Follow the Red Specter project for more ethical cybersecurity tools and playbooks.
+
 
 
 ---
