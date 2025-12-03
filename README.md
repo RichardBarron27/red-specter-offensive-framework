@@ -3,6 +3,8 @@
 ![Last Commit](https://img.shields.io/github/last-commit/RichardBarron27/red-specter-offensive-framework)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)
 ![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20Kali%20-purple)
+![License](https://img.shields.io/github/license/RichardBarron27/red-specter-offensive-framework)
+
 
 > Companion tools: ScriptMap · Email OSINT
 
