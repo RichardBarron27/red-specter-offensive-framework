@@ -237,7 +237,7 @@ If these tools help you, you can support future development:
 
 Your support helps me keep improving Red Specter and building new tools. Thank you!
 
-
+Notice for Users: If you cloned this and found it useful, please consider starring the repo! Stars help with visibility and let me know which projects to maintain.
 
 
 ---
